@@ -1,3 +1,0 @@
-version 0.1
--) bigger and centered screen screen
--) not random ball's speed anymore 
