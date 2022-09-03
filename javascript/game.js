@@ -16,36 +16,6 @@ var winner = false;
 loadMap();
 start();
 
-function Brick(x,y,width,height,color){
-	this.x = x;
-	this.y = y;
-	this.width = width;
-	this.height = height;
-	this.color = color;
-}
-
-function Ball(x,y,r,dx,dy,color){//r=ball's dimension dx,dy= speed
-	this.x = x;
-	this.y = y;
-	this.r = r;
-	this.dx = dx;
-	this.dy = dy;
-	this.color = color;
-}
-
-function Player(x,y,width,height){
-	this.x = x;
-	this.y = y;
-	this.width = width;
-	this.height = height;
-	this.moveSpeedLimit = 10;
-	this.accel = 0.75;
-	this.decel = 0.75;
-	this.xVel = 0;
-	this.yVel = 0;
-	this.color = "black";
-}
-
 function start(){
 	checkKeyboardStatus();
 	checkPlayer_BoundsCollision();
@@ -60,14 +30,15 @@ function start(){
 	checkWinner();
 	if(gameOver === false){
 		requestAnimationFrame(start);
-        out.innerHTML = "Remained lifes:"+ life;
 	} else {
-		out.innerHTML = "Game over";
 		if(winner){
-			out.innerHTML += ", you won!";
+			victoryDialog.hidden=false;
+			victoryDialog.showModal();
 		}
-		out.innerHTML += "<br>";
-		out.innerHTML += "Press R to restart";
+		else{
+			gameOverDialog.hidden = false;
+			gameOverDialog.showModal();
+		}
 	}
 		
 }
@@ -85,8 +56,10 @@ document.onkeydown = function(e){
 		dKeyDown = true;
 	}
 	if(e.keyCode === 82){
-		if(gameOver) restart();
-        if(life>0) tryAgain();
+		victoryDialog.hidden=true;
+		gameOverDialog.hidden = true;
+		restart();
+		
 	}
 }
 
@@ -144,17 +117,9 @@ function checkBall_BoundsCollision(){
 		ball.y = 0 + ball.r;
 		ball.dy = -ball.dy
 	} else if(ball.y + ball.r > canvas.height){
-        if(life<=2){
-            life=life+1;
-            gameOver = false;
-            winner = false; 
-        }
-        else{
-            gameOver = true;
-            winner = false; 
-        }
-        
-	}
+       	gameOver = true;
+       	winner = false; 
+    }
 }
 
 function checkBall_PlayerCollision(){
@@ -223,52 +188,6 @@ function renderPlayer(){
 	c.restore();
 }
 
-function loadMap(){
-	bricks = [ //x,y,width,height,color
-        new Brick(60,70,100,20,"blue"),
-        new Brick(165,70,100,20,"blue"),
-        new Brick(270,70,100,20,"blue"),
-        new Brick(375,70,100,20,"blue"),
-        new Brick(480,70,100,20,"blue"),
-        new Brick(585,70,100,20,"blue"),//Row 1
-
-        new Brick(60,100,100,20,"green"),
-        new Brick(165,100,100,20,"green"),
-        new Brick(270,100,100,20,"green"),
-        new Brick(375,100,100,20,"green"),
-        new Brick(480,100,100,20,"green"),
-        new Brick(585,100,100,20,"green"),//Row 2
-
-        new Brick(60,130,100,20,"darkcyan"),
-        new Brick(165,130,100,20,"darkcyan"),
-        new Brick(270,130,100,20,"darkcyan"),
-        new Brick(375,130,100,20,"darkcyan"),
-        new Brick(480,130,100,20,"darkcyan"),
-        new Brick(585,130,100,20,"darkcyan"),//Row 3
-
-        new Brick(60,160,100,20,"coral"),
-        new Brick(165,160,100,20,"coral"),
-        new Brick(270,160,100,20,"coral"),
-        new Brick(375,160,100,20,"coral"),
-        new Brick(480,160,100,20,"coral"),
-        new Brick(585,160,100,20,"coral"),//Row 4
-
-        new Brick(60,190,100,20,"darkolivegreen"),
-        new Brick(165,190,100,20,"darkolivegreen"),
-        new Brick(270,190,100,20,"darkolivegreen"),
-        new Brick(375,190,100,20,"darkolivegreen"),
-        new Brick(480,190,100,20,"darkolivegreen"),
-        new Brick(585,190,100,20,"darkolivegreen"),//Row 5
-
-        new Brick(60,220,100,20,"lightsteelblue"),
-        new Brick(165,220,100,20,"lightsteelblue"),
-        new Brick(270,220,100,20,"lightsteelblue"),
-        new Brick(375,220,100,20,"lightsteelblue"),
-        new Brick(480,220,100,20,"lightsteelblue"),
-        new Brick(585,220,100,20,"lightsteelblue"),//Row 6
-	];
-}
-
 function checkWinner(){
 	if(bricks.length < 1){
 		gameOver = true;
@@ -283,13 +202,6 @@ function restart(){
     gameOver = false;
     loadMap();
 	start();
-}
-
-function tryAgain(){
-    out.innerHTML = "";
-	ball = new Ball(300,400,10,4,4,"red");
-	player = new Player(350,780,80,15);
-    start()
 }
 
 function renderBall(){

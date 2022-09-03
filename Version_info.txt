@@ -1,3 +1,9 @@
 VERSION 0.1:
     -) Bigger and centered screen 
     -) Not random ball's speed anymore 
+
+VERSION 0.6:
+    -)Main menu added
+    -)How to play page added
+    -)Dialog for gameover and victory added
+    -)Fixed bug of life system
