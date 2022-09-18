@@ -4,6 +4,7 @@ body{
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-image: url('../images/background.png');
 }
 #canvas{
     background-color: white;

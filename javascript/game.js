@@ -4,9 +4,10 @@ var out = document.getElementById("out");
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
 var player = new Player(350,780,80,15);
-let life = 0;
+let life = 3;
 var ball = new Ball(300,400,10,4,4,"red");
 var bricks;
+var score = 0;
 var dKeyDown = false;
 var aKeyDown = false;
 var try_again = true;
@@ -31,6 +32,10 @@ function start(){
 	if(gameOver === false){
 		requestAnimationFrame(start);
 	} else {
+		
+		score = 0;
+		document.getElementById("scoreId").innerHTML = "SCORE: " + score;
+
 		if(winner){
 			victoryDialog.hidden=false;
 			victoryDialog.showModal();
@@ -48,18 +53,25 @@ function moveBall(){
 	ball.y = ball.y+ball.dy;
 }
 
+//KEYBOARD BUTTON
 document.onkeydown = function(e){
-	if(e.keyCode === 65){
+	if(e.keyCode === 65){ //A 
 		aKeyDown = true;
 	}
-	if(e.keyCode === 68){
+	if(e.keyCode === 80){ //P
+		//Pause function TODO
+	}
+	if(e.keyCode === 68){ //D 
 		dKeyDown = true;
 	}
-	if(e.keyCode === 82){
+	if(e.keyCode === 82){ //R
 		victoryDialog.hidden=true;
 		gameOverDialog.hidden = true;
+
+		score = 0;
+		document.getElementById("scoreId").innerHTML = "SCORE: " + score;
+
 		restart();
-		
 	}
 }
 
@@ -94,6 +106,10 @@ function checkBall_BrickCollision(){
 			} else {
 				ball.dy = -ball.dy;
 			}
+
+			score = score + 100
+			document.getElementById("scoreId").innerHTML = "SCORE: " + score;
+
 			bricks.splice(i,1);
 			return;
 		}
@@ -200,7 +216,8 @@ function restart(){
 	ball = new Ball(300,400,10,4,4,"red");
 	player = new Player(350,780,80,15);
     gameOver = false;
-    loadMap();
+	
+	loadMap();
 	start();
 }
 

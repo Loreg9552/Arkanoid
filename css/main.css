@@ -4,6 +4,7 @@ body{
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-image: url('../images/background.png');
 }
 #newGame, #creditBtn, #howBtn{
     text-align: center;
@@ -21,7 +22,7 @@ body{
   }
   #title{
     margin: auto;
-    color: red;
+    color: black;
     font-size: 5em;
     font-family: "Courier New";
   }

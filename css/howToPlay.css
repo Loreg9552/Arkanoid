@@ -4,10 +4,11 @@ body{
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-image: url('../images/background.png');
 }
 #title{
-    margin: auto;
-    color: red;
+    margin: 20px auto;
+    color: black;
     font-size: 3em;
     font-family: "Courier New";
 }
@@ -22,7 +23,7 @@ body{
     font-weight: bold;
     font-family: "Courier New";
     width: 8em;
-    margin: 5px auto;
+    margin: 20px auto;
    
   }
 .grid-container {

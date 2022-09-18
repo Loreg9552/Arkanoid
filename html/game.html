@@ -6,9 +6,19 @@
     <body>
 		<canvas id="canvas" width="750" height="800">Install gentoo</canvas>
 		<div id="out"></div>
-		
+
 		<script type="text/javascript" src="../javascript/levels.js"></script>
 		<script type="text/javascript" src="../javascript/game.js"></script>
+
+		<h3 id="scoreId">SCORE: 0</h3>
+		<!--<h3 id="lifeId">LIFE: 3</h3>-->
+
+		<dialog id="pauseDialog">
+			<form method="dialog">
+			  <p><label>PAUSE <div id="pressR">Press R to restart or P to continue</div> </label></p>
+			  <div><button onClick="window.location.href='main.html'" id="confirmBtn" value="default">Get back to main menu</button></div>
+			</form>
+		</dialog>
 
 		<dialog id="gameOverDialog">
 			<form method="dialog">
@@ -16,7 +26,7 @@
 			  <div><button onClick="window.location.href='main.html'" id="confirmBtn" value="default">Get back to main menu</button></div>
 			</form>
 		</dialog>
-
+		
 		<dialog id="victoryDialog">
 			<form method="dialog">
 			  <p><label>YOU WIN! <div id="pressR">Press R to restart</div> </label></p>
