@@ -11,25 +11,25 @@
 		<script type="text/javascript" src="../javascript/game.js"></script>
 
 		<h3 id="scoreId">SCORE: 0</h3>
-		<!--<h3 id="lifeId">LIFE: 3</h3>-->
+		<h3 id="lifeId">LIVES: 5</h3>
 
 		<dialog id="pauseDialog">
 			<form method="dialog">
-			  <p><label>PAUSE <div id="pressR">Press R to restart or P to continue</div> </label></p>
+			  <p><label id="pauseLabel" ><b>PAUSE</b> <div id="pressR">Press R to restart or P to continue</div> </label></p>
 			  <div><button onClick="window.location.href='main.html'" id="confirmBtn" value="default">Get back to main menu</button></div>
 			</form>
 		</dialog>
 
 		<dialog id="gameOverDialog">
 			<form method="dialog">
-			  <p><label>GAME OVER! <div id="pressR">Press R to restart</div> </label></p>
+			  <p><label id="gameOverLabel" ><b>GAME OVER!</b> <div id="pressR">Press R to restart</div> </label></p>
 			  <div><button onClick="window.location.href='main.html'" id="confirmBtn" value="default">Get back to main menu</button></div>
 			</form>
 		</dialog>
 		
 		<dialog id="victoryDialog">
 			<form method="dialog">
-			  <p><label>YOU WIN! <div id="pressR">Press R to restart</div> </label></p>
+			  <p><label id="victoryLabel" ><b>YOU WIN!</b> <div id="pressR">Press R to restart</div> </label></p>
 			  <div><button onClick="window.location.href='main.html'" id="confirmBtn" value="default">Get back to main menu</button></div>
 			</form>
 		</dialog>

@@ -9,3 +9,35 @@ body{
 #canvas{
     background-color: white;
 }
+
+#scoreId,#lifeId{
+    color: white;
+}
+
+#pressR{
+    color: black;
+}
+#confirmBtn{
+    text-align: center;
+    border: 1px  black;
+    border-radius: 7px;
+    background-color: white;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Courier New";
+    width: 14em;
+    margin: 5px auto;
+}
+#gameOverDialog{
+    color: red;
+}
+#gameOverLabel{
+    color: black;
+}
+#victoryDialog{
+    color: green;
+}
+#victoryLabel{
+    color: black;
+}

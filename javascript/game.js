@@ -4,7 +4,7 @@ var out = document.getElementById("out");
 window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
 var player = new Player(350,780,80,15);
-let life = 3;
+let life = 5;
 var ball = new Ball(300,400,10,4,4,"red");
 var bricks;
 var score = 0;
@@ -13,6 +13,8 @@ var aKeyDown = false;
 var try_again = true;
 var gameOver = false;
 var winner = false;
+var pause = false ;
+	clear;
 
 loadMap();
 start();
@@ -32,17 +34,24 @@ function start(){
 	if(gameOver === false){
 		requestAnimationFrame(start);
 	} else {
-		
-		score = 0;
 		document.getElementById("scoreId").innerHTML = "SCORE: " + score;
+		document.getElementById("lifeId").innerHTML = "LIVES: " + life;
 
 		if(winner){
 			victoryDialog.hidden=false;
 			victoryDialog.showModal();
 		}
 		else{
-			gameOverDialog.hidden = false;
-			gameOverDialog.showModal();
+			life = life - 1;
+			if(life<0){
+				life = 5;
+				score = 0;
+				gameOverDialog.hidden = false;
+				gameOverDialog.showModal();
+			}
+			else{
+				restart()
+			}
 		}
 	}
 		
@@ -59,7 +68,7 @@ document.onkeydown = function(e){
 		aKeyDown = true;
 	}
 	if(e.keyCode === 80){ //P
-		//Pause function TODO
+		//pause TODO
 	}
 	if(e.keyCode === 68){ //D 
 		dKeyDown = true;
@@ -68,9 +77,12 @@ document.onkeydown = function(e){
 		victoryDialog.hidden=true;
 		gameOverDialog.hidden = true;
 
+		life = 5;
 		score = 0;
 		document.getElementById("scoreId").innerHTML = "SCORE: " + score;
+		document.getElementById("lifeId").innerHTML = "LIVES: " + life;
 
+		loadMap()
 		restart();
 	}
 }
@@ -212,12 +224,14 @@ function checkWinner(){
 }
 
 function restart(){
-	out.innerHTML = "";
+	document.getElementById("lifeId").innerHTML = "LIVES: " + life;
+
 	ball = new Ball(300,400,10,4,4,"red");
 	player = new Player(350,780,80,15);
     gameOver = false;
 	
-	loadMap();
+	//loadMap();
+	
 	start();
 }
 
