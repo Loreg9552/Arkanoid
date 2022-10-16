@@ -43,11 +43,15 @@ function start(){
 		}
 		else{
 			life = life - 1;
+			var audio = document.getElementById("audioBall");
+        	audio.play();
 			if(life<0){
 				life = 5;
 				score = 0;
 				gameOverDialog.hidden = false;
 				gameOverDialog.showModal();
+				var audio = document.getElementById("audioGameOver");
+        		audio.play();
 			}
 			else{
 				restart()
@@ -111,6 +115,10 @@ function checkBall_BrickCollision(){
 		bx2 = bricks[i].x+bricks[i].width;
 		by2 = bricks[i].y+bricks[i].height;
 		if(!(ax2 <= bx1 || bx2 <= ax1 || ay2 <= by1 || by2 <= ay1)){
+
+			var audio = document.getElementById("audioBrick");
+        	audio.play();
+
 			prevX = ball.x - ball.dx - ball.r;
 			prevY = ball.y - ball.dy - ball.r;
 			if((prevX > bx2 || prevX < bx1) && prevY >= by1 && prevY <= by2){

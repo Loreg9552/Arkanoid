@@ -1,0 +1,40 @@
+body{
+    background-color: #999999;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('../images/background.png');
+}
+#title{
+    margin: 20px auto;
+    color: black;
+    font-size: 3em;
+    font-family: "Courier New";
+}
+
+.grid-container {
+    display:block;
+    grid-template-columns: 100px 90px auto 50px;
+    gap: 10px;
+    background-color: white;
+    padding: 10px;
+}
+#grid-item{
+    font-size: 1em;
+}
+
+#backBtn{
+    text-align: center;
+    vertical-align: middle;
+    border: 2px solid black;
+    border-radius: 7px;
+    background-color: red;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: "Courier New";
+    width: 8em;
+    margin: 20px auto;
+   
+  }

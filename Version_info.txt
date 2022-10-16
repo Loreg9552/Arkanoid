@@ -2,7 +2,6 @@ UPDATES UNRELEASED:
     -)Better buttons graphic
     -)Added pause function
     -)Added background music (https://www.youtube.com/watch?v=aCwk8XW008k)
-    -)Added sounds effects
     -)Added Credit page
     -)Added powerup
     
@@ -24,5 +23,9 @@ UPDATES RELEASED:
     VERSION 1.0:
         -)Better dialog's graphic
         -)Added life system
+
+    VERSION 1.2:
+        -)adjusted temporarly size screen problem
+        -)Added sounds effects for broken bricks,ball losing and game over
 
 
